@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         let tag = sender.currentTitle!
         playSound(buttonTag: tag)
+        animateOpacity(button: sender)
     }
     
     private func playSound(buttonTag: String) {
@@ -29,6 +30,16 @@ class ViewController: UIViewController {
         player.play()
     }
     
+    private func animateOpacity(button: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            button.layer.opacity = 0.5
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                button.layer.opacity = 1
+            }
+        }
 
+        
+    }
 }
 
